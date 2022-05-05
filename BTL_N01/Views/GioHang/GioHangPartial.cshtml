@@ -1,0 +1,11 @@
+﻿<a href="@Url.Action("GioHang", "GioHang")" style="cursor: pointer">
+    <img src="~/Ảnh/icon-cart.png" data-alt-src="" />
+    @{
+        if (ViewBag.TongSoLuong != null)
+        {
+            <span id="sl" style="font-size:14px">@ViewBag.TongSoLuong</span>
+        }
+        
+    }
+
+</a>

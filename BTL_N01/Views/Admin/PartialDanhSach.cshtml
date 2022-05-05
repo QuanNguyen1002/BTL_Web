@@ -1,0 +1,19 @@
+﻿@using BTL_N01.Models
+@model ThietBiYTe
+@{
+    @*if (Model != null)*@
+    {
+        <tr>
+            <td>STT</td>
+            <td>@Model.MaThietBi</td>
+            <td>@ViewBag.LoaiThietBi</td>
+            <td>Loại SP </td>
+            <td>Giá</td>
+            <td>
+                Chi Tiết
+            </td>
+            <td><img src="#" title="Ảnh Sp"></td>
+            <td><a href="@Url.Action("Sua", "Admin")">Sửa</a></td>
+        </tr>
+    }
+}

@@ -1,0 +1,22 @@
+﻿@using BTL_N01.Models
+@model List<DanhMuc>
+@foreach (var item in Model)
+
+{
+
+<li class="nav-item">
+    <span class="nav-click">
+        <i class="nav-arrow"></i>
+    </span>
+    <a href="@Url.Action("DanhMucSP","BanHang", new { @MaDanhmuc = @item.MaDanhMuc })">@item.TenDanhMuc</a>
+
+    <ul class="nav-submenu">
+        @Html.Action("Loai", "BanHang", new { @MaDanhmuc = @item.MaDanhMuc })
+
+    </ul>
+</li>
+    
+}
+@*<a href="@Url.Action("SanPhamTheoLoai", "BanHang", new {​​​​​@MaLoai = item.MaLoai}​​​​​)" onclick="" class="w3-bar-item w3-button">@item.Loai</a>
+    )
+*@

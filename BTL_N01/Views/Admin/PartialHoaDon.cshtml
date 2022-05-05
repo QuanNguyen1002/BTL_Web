@@ -1,0 +1,60 @@
+﻿@using BTL_N01.Models
+@model HoaDonBan
+
+@{ 
+    var t = "class='active'";
+    if (ViewBag.TongTien != null && ViewBag.TongTien != 0)
+    {
+        t = "style = 'cursor: pointer', onclick = 'DisplayHoaDon(&apos;"+@Model.SoHDB+ "&apos;); return false'";
+    }
+
+}
+<tr @Html.Raw(t)>
+    <td style="max-width:150px">@Model.SoHDB</td>
+    <td>@Model.KhachHang.TenKH</td>
+    <td>@Model.KhachHang.DienThoai</td>
+    <td>@Model.KhachHang.DiaChi</td>
+    <td>@Model.NgayLap</td>
+    <td id="@Model.SoHDB" style="color:red">
+        @{
+            if (ViewBag.TongTien != null && ViewBag.TongTien != 0)
+            {
+                <script>
+                    var num = @ViewBag.TongTien;
+                    var text = num.toLocaleString() + " VNĐ";
+                    document.getElementById("@Model.SoHDB").innerHTML = text;
+                </script>
+
+            }
+            else
+            {
+                <p style="margin: 0;color:blue">Đàm phán</p>
+            }
+        }
+    </td>
+</tr>
+@*@section Scripts{
+    <script type="text/javascript">
+        function DisplayHoaDon(id) {
+            alert("OK");
+            alert('https://localhost:44335/Admin/ChiTietHoaDon?SoHD=' + id);
+            var str = '<table class="table table-striped">< thead ><tr><th>Số Hóa Đơn</th><th>Tên Khách Hàng</th><th>Ngày Mua</th><th>Thành tiền</th></tr></thead ><tbody>';
+            $.ajax({
+                type: 'GET',
+                url: 'https://localhost:44335/Admin/ChiTietHoaDon?SoHD=' + id,
+                dataType: 'JSON',
+                success: function (data) {
+                    $.each(data, function (key, val) {
+                        str += '<tr><td>' + val.MaSP + '</td><td>' + val.TenSP + '</td><td>' + val.GioiThieuSP + '</td></tr>';
+                    });
+                    str += '</tbody></table >';
+                    $('#ChiTietHoaDon').html(str);
+                },
+                error: function (xhr) {
+                    console.log("err");
+                    alert(xhr.responseText);
+                }
+            });
+        }
+    </script>
+}*@

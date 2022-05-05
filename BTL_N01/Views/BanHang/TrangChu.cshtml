@@ -1,0 +1,18 @@
+﻿@using BTL_N01.Models
+@model List<DanhMuc>
+@{
+    ViewBag.Title = "TrangChu";
+    Layout = "~/Views/Shared/_LayoutBH.cshtml";
+}
+
+<section class="homeproducts">
+    <div class="container">
+        @{
+            foreach (var item in Model)
+            {
+                 @Html.Action("LoaiDanhmuc", "BanHang", new { @MaDanhMuc = @item.MaDanhMuc, @sosp1loai = 4 })
+            }
+        }
+
+    </div>
+</section>

@@ -1,0 +1,12 @@
+﻿@using BTL_N01.Models
+@model  KeyValuePair<List<LoaiThietBi>, int>
+<div class="">
+    @{
+        foreach (var item in Model.Key)
+        {
+
+            @Html.Action("LoaiSP", "BanHang", new { @MaLoaiSP = @item.MaLoai, @Sosp = @Model.Value })
+        }
+    }
+</div>
+

@@ -1,0 +1,34 @@
+﻿@using BTL_N01.Models;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<HoaDonBan>
+@{
+    ViewBag.Title = "HoaDon";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<table class="table table-hover" style="text-align:center">
+    <thead>
+        <tr>
+            <th style="max-width:150px">Số Hóa Đơn</th>
+            <th>Tên Khách Hàng</th>
+            <th>Số điện thoại</th>
+            <th>Địa chỉ</th>
+            <th>Ngày Mua</th>
+            <th>Thành tiền</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (HoaDonBan i in Model)
+        {
+            @Html.Action("PartialHoaDon", "Admin", new { @SoHD = i.SoHDB })
+        }
+    </tbody>
+</table>
+
+
+<nav style="float:right">
+    <ul class="">
+        @Html.PagedListPager(Model, page => Url.Action("HoaDon", new { page = page }))
+    </ul>
+</nav>
+<hr>
+<div id="ChiTietHoaDon"></div>

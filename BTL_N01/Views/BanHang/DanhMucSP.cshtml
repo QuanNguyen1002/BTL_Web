@@ -1,0 +1,14 @@
+﻿@using BTL_N01.Models
+@model DanhMuc
+@{
+    ViewBag.Title = "DanhMucSP";
+    Layout = "~/Views/Shared/_LayoutBH.cshtml";
+}
+
+
+<section class="homeproducts">
+    <div class="container">
+        @Html.Action("LoaiDanhmuc", "BanHang", new { @MaDanhMuc = Model.MaDanhMuc })
+    </div>
+</section>
+
